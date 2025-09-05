@@ -245,3 +245,18 @@ section,
 @media (max-width: 768px) {
   .logo-row { grid-template-columns: repeat(2, 1fr) !important; }
 }
+
+/* Karta hero CTA spacing on phones */
+@media (max-width: 768px) {
+  /* make each CTA full-width and centered */
+  .k-hero [data-btn] {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* add space only between consecutive CTAs (not above the first) */
+  .k-hero [data-btn] + [data-btn] {
+    margin-top: 12px;
+  }
+}

@@ -229,7 +229,7 @@ export default function BFTSCPage() {
               <p style={sx.body} className="body-tight">
                 If you’re exploring fintech in North Africa, let’s talk.
               </p>
-              <a href="#contact" style={sx.btnGhost} data-btn className="btn-wide">Request Pitch Deck</a>
+              <a href="#contact" style={sx.btnPrimary} data-btn className="btn-wide">Request Pitch Deck</a>
             </div>
           </div>
         </Section>
@@ -297,7 +297,7 @@ export default function BFTSCPage() {
           .hero-title { font-size: 32px !important; line-height: 1.15 !important; }
           .hero-lead  { font-size: 16px !important; }
           .cta-row    { gap: 10px !important; }
-          .btn-wide   { display:block; width:100%; text-align:center; }
+          .btn-wide   { display:block; width:100%; text-align:center; margin-top: 16px !important;}
           .hero-pills { grid-template-columns: 1fr !important; }
 
           /* Ribbon breathing room */
@@ -682,6 +682,8 @@ const sx: Record<string, React.CSSProperties> = {
     borderRadius: 14,
     padding: 18,
     boxShadow: "0 8px 22px rgba(0,0,0,0.05)",
+    display: "grid",
+    gap: 12, 
   },
 
   badgeRow: { display: "flex", gap: 8, flexWrap: "wrap", margin: "8px 0 14px" },
