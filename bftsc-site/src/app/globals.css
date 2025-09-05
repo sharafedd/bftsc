@@ -1,5 +1,5 @@
-/* =========================
-   BFTSC — globals.css (responsive)
+/* ========================= 
+   BFTSC — globals.css (responsive + hamburger)
    ========================= */
 
 /* ===== Brand colors ===== */
@@ -17,7 +17,6 @@
   margin: 0;
   padding: 0;
 }
-
 html, body {
   height: 100%;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Inter", sans-serif;
@@ -37,18 +36,10 @@ a {
 a:hover { opacity: 0.85; }
 
 /* ===== Images ===== */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+img { max-width: 100%; height: auto; display: block; }
 
 /* ===== Headings ===== */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--ink);
-}
+h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; color: var(--ink); }
 
 /* ===== Generic container ===== */
 .container {
@@ -73,25 +64,17 @@ section.accent { background: var(--orange); color: #1b1400; }
   transition: all 0.2s ease;
 }
 /* Primary orange CTA */
-.btn-orange {
-  background: var(--orange);
-  color: #1b1400;
-  border: 2px solid var(--orange);
-}
+.btn-orange { background: var(--orange); color: #1b1400; border: 2px solid var(--orange); }
 .btn-orange:hover { filter: brightness(0.95); }
 /* Ghost button for blue headers/footers */
-.btn-ghost {
-  background: transparent;
-  border: 2px solid var(--white);
-  color: var(--white);
-}
+.btn-ghost { background: transparent; border: 2px solid var(--white); color: var(--white); }
 .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); }
 
 /* ===== Footer (generic element) ===== */
 footer { font-size: 14px; line-height: 1.4; }
 
 /* -----------------------------------------------------
-   New: Header / Nav / Footer classes used in layout.tsx
+   Header / Nav / Footer classes used in layout.tsx
    ----------------------------------------------------- */
 
 /* Header wrapper */
@@ -111,6 +94,9 @@ footer { font-size: 14px; line-height: 1.4; }
   justify-content: space-between;
 }
 
+/* Header inner wrapper to scope the toggle */
+.bftsc-header-wrap { position: relative; }
+
 /* Logo block */
 .bftsc-logo {
   display: flex;
@@ -119,19 +105,9 @@ footer { font-size: 14px; line-height: 1.4; }
   text-decoration: none;
   color: var(--white);
 }
-.bftsc-logo-img {
-  height: 38px;
-  width: auto;
-  border-radius: 6px;
-}
+.bftsc-logo-img { height: 38px; width: auto; border-radius: 6px; }
 
-/* Navigation */
-.bftsc-nav {
-  display: flex;
-  gap: 12px;
-}
-
-/* Button styles used in header nav */
+/* Header buttons */
 .btn-primary {
   padding: 8px 14px;
   border-radius: 8px;
@@ -162,50 +138,86 @@ footer { font-size: 14px; line-height: 1.4; }
   align-items: center;
   justify-content: space-between;
 }
-.footer-left {
-  display: flex;
+.footer-left { display: flex; align-items: center; gap: 10px; }
+.footer-logo { height: 24px; width: auto; border-radius: 4px; }
+.footer-mail { color: var(--orange); font-weight: 600; text-decoration: none; }
+
+/* =========================
+   CSS-only Hamburger Toggle
+   ========================= */
+
+/* Hidden checkbox: accessible but not visible */
+.nav-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The hamburger button (three lines) */
+.nav-toggle-btn {
+  display: none;            /* hidden on desktop */
+  cursor: pointer;
+  margin-left: auto;        /* push to right within header row */
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--white);
+  border-radius: 10px;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
 }
-.footer-logo {
-  height: 24px;
-  width: auto;
-  border-radius: 4px;
+
+/* The bars */
+.nav-toggle-bars,
+.nav-toggle-bars::before,
+.nav-toggle-bars::after {
+  content: "";
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform .2s ease, opacity .2s ease;
 }
-.footer-mail {
-  color: var(--orange);
-  font-weight: 600;
-  text-decoration: none;
-}
+.nav-toggle-bars::before { transform: translateY(-6px); }
+.nav-toggle-bars::after  { transform: translateY(6px); }
+
+/* Transform into an "X" when checked */
+#nav-toggle:checked + .nav-toggle-btn .nav-toggle-bars { transform: rotate(45deg); }
+#nav-toggle:checked + .nav-toggle-btn .nav-toggle-bars::before { transform: rotate(90deg); }
+#nav-toggle:checked + .nav-toggle-btn .nav-toggle-bars::after { opacity: 0; }
 
 /* ===== Mobile (phone) styles ===== */
 @media (max-width: 768px) {
   /* Hide big visual in hero on phones if present */
   .hero-visual { display: none !important; }
 
-  /* Stack header content */
-  .bftsc-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  /* Show hamburger */
+  .nav-toggle-btn { display: inline-flex; }
 
-  /* Stack nav as full-width buttons */
+  /* Stack header content */
+  .bftsc-container { flex-direction: column; align-items: flex-start; }
+
+  /* Hide nav by default; reveal when toggled */
   .bftsc-nav {
-    flex-direction: column;
+    display: none;
     width: 100%;
     margin-top: 12px;
+    flex-direction: column;
+    gap: 10px;
   }
-  .bftsc-nav a {
-    width: 100%;
-    text-align: center;
-  }
+  /* Scope: input + label + nav sit inside .bftsc-header-wrap */
+  .bftsc-header-wrap #nav-toggle:checked ~ .bftsc-nav { display: flex; }
+
+  /* Full-width tap targets */
+  .bftsc-nav a { width: 100%; text-align: center; }
 
   /* Stack footer content */
-  .footer-content {
-    flex-direction: column;
-    gap: 12px;
-    text-align: center;
-  }
+  .footer-content { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+/* Force desktop nav layout (in case mobile rules loaded earlier) */
+@media (min-width: 769px) {
+  .bftsc-nav { display: flex; gap: 12px; }
 }
 
 /* ===== Kill horizontal overflow on phones ===== */
