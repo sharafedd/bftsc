@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "BFTSC Algeria",
@@ -138,6 +139,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
         </footer>
+
+        {/* ✅ Add Vercel Analytics here */}
+        <Analytics />
       </body>
     </html>
   );
