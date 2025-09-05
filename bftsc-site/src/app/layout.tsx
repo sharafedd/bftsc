@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               }}
             >
               <img
-                src="/bftsc-logo.jpg"
+                src="/bftsc/bftsc-logo.jpg"
                 alt="BFTSC"
                 style={{ height: "38px", width: "auto", borderRadius: "6px" }}
               />
@@ -119,7 +119,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           >
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <img
-                src="/bftsc-logo.jpg"
+                src="/bftsc/bftsc-logo.jpg"
                 alt="BFTSC"
                 style={{ height: "24px", width: "auto", borderRadius: "4px" }}
               />
