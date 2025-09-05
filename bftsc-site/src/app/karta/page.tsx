@@ -10,7 +10,7 @@ export default function KartaPage() {
           <div style={sx.container}>
             <div style={sx.heroGrid} className="stagger">
               {/* Left copy */}
-              <div className="reveal-up">
+              <div className="hero-text reveal-up">
                 <div style={sx.pill}>Karta Innovation Project</div>
                 <h1 style={sx.h1}>Smart • Simple • Algerian</h1>
                 <p style={sx.lead}>
@@ -49,7 +49,7 @@ export default function KartaPage() {
               </div>
 
               {/* Right visual */}
-              <div style={{ position: "relative" }} className="reveal-up">
+              <div style={{ position: "relative" }} className="hero-visual reveal-up">
                 <div style={sx.heroArtWrap}>
                   {/* Depth cards behind */}
                   <div style={sx.heroGhostA} className="tilt-float" aria-hidden />

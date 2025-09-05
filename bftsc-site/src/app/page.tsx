@@ -11,7 +11,7 @@ export default function BFTSCPage() {
           <div style={sx.container}>
             <div style={sx.heroGrid} className="stagger">
               {/* Copy */}
-              <div className="reveal-up">
+              <div className="hero-text reveal-up">
                 <div style={sx.badge}>BFTSC</div>
                 <h1 style={sx.h1}>Smart Payments Built in Algeria</h1>
                 <p style={sx.lead}>
@@ -30,7 +30,7 @@ export default function BFTSCPage() {
               </div>
 
               {/* Visual */}
-              <div style={{ position: "relative" }} className="reveal-up">
+              <div style={{ position: "relative" }} className="hero-visual reveal-up">
                 <div style={sx.heroArtWrap}>
                   {/* subtle stacked frames */}
                   <div style={mix(sx.heroFrame, sx.frame1)} aria-hidden />
