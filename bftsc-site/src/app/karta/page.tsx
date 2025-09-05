@@ -6,7 +6,10 @@ export default function KartaPage() {
     <>
       <main style={sx.page}>
         {/* HERO */}
-        <section style={mix(sx.sectionPad, sx.hero)} className="anim-bg-pan">
+        <section
+          style={{ ...sx.sectionPad, ...sx.hero, overflow: "hidden" }}
+          className="anim-bg-pan k-hero"
+        >
           <div style={sx.container}>
             <div style={sx.heroGrid} className="stagger">
               {/* Left copy */}
@@ -551,7 +554,13 @@ const sx: Record<string, React.CSSProperties> = {
     border: "1px solid rgba(255,255,255,0.5)",
   },
 
-  heroArtWrap: { position: "relative", width: 460, height: 300, margin: "0 auto" },
+  heroArtWrap: {
+    position: "relative",
+    width: "min(100%, 560px)",
+    aspectRatio: "4 / 3",
+    margin: "0 auto",
+  },
+
   heroCard: {
     position: "absolute",
     inset: 0,

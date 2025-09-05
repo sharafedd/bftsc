@@ -1,5 +1,5 @@
 /* =========================
-   BFTSC — globals.css (final)
+   BFTSC — globals.css (responsive)
    ========================= */
 
 /* ===== Brand colors ===== */
@@ -34,10 +34,7 @@ a {
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
-
-a:hover {
-  opacity: 0.85;
-}
+a:hover { opacity: 0.85; }
 
 /* ===== Images ===== */
 img {
@@ -53,7 +50,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--ink);
 }
 
-/* ===== Containers ===== */
+/* ===== Generic container ===== */
 .container {
   max-width: 1180px;
   margin: 0 auto;
@@ -61,25 +58,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ===== Sections ===== */
-section {
-  padding: 40px 20px;
-}
+section { padding: 40px 20px; }
+section.light { background: var(--white); }
+section.dark { background: var(--blue); color: var(--white); }
+section.accent { background: var(--orange); color: #1b1400; }
 
-section.light {
-  background: var(--white);
-}
-
-section.dark {
-  background: var(--blue);
-  color: var(--white);
-}
-
-section.accent {
-  background: var(--orange);
-  color: #1b1400;
-}
-
-/* ===== Buttons ===== */
+/* ===== Buttons (legacy) ===== */
 .btn {
   display: inline-block;
   padding: 8px 14px;
@@ -88,38 +72,164 @@ section.accent {
   text-decoration: none;
   transition: all 0.2s ease;
 }
-
 /* Primary orange CTA */
 .btn-orange {
   background: var(--orange);
   color: #1b1400;
   border: 2px solid var(--orange);
 }
-
-.btn-orange:hover {
-  filter: brightness(0.95);
-}
-
+.btn-orange:hover { filter: brightness(0.95); }
 /* Ghost button for blue headers/footers */
 .btn-ghost {
   background: transparent;
   border: 2px solid var(--white);
   color: var(--white);
 }
+.btn-ghost:hover { background: rgba(255, 255, 255, 0.1); }
 
-.btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.1);
+/* ===== Footer (generic element) ===== */
+footer { font-size: 14px; line-height: 1.4; }
+
+/* -----------------------------------------------------
+   New: Header / Nav / Footer classes used in layout.tsx
+   ----------------------------------------------------- */
+
+/* Header wrapper */
+.bftsc-header {
+  background: var(--blue);
+  border-bottom: 2px solid var(--orange);
+  color: var(--white);
 }
 
-/* ===== Footer ===== */
-footer {
-  font-size: 14px;
-  line-height: 1.4;
+/* Shared layout container */
+.bftsc-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
+/* Logo block */
+.bftsc-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--white);
+}
+.bftsc-logo-img {
+  height: 38px;
+  width: auto;
+  border-radius: 6px;
+}
+
+/* Navigation */
+.bftsc-nav {
+  display: flex;
+  gap: 12px;
+}
+
+/* Button styles used in header nav */
+.btn-primary {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--orange);
+  color: #1b1400;
+  font-weight: 600;
+  text-decoration: none;
+}
+.btn-outline {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 2px solid var(--white);
+  color: var(--white);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Footer block used in layout.tsx */
+.bftsc-footer {
+  background: var(--blue-dark);
+  border-top: 2px solid var(--orange);
+  color: var(--white);
+  margin-top: 40px;
+}
+.footer-content {
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer-logo {
+  height: 24px;
+  width: auto;
+  border-radius: 4px;
+}
+.footer-mail {
+  color: var(--orange);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ===== Mobile (phone) styles ===== */
 @media (max-width: 768px) {
-  .hero-visual {
-    display: none !important;
+  /* Hide big visual in hero on phones if present */
+  .hero-visual { display: none !important; }
+
+  /* Stack header content */
+  .bftsc-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Stack nav as full-width buttons */
+  .bftsc-nav {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 12px;
+  }
+  .bftsc-nav a {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Stack footer content */
+  .footer-content {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
   }
 }
 
+/* ===== Kill horizontal overflow on phones ===== */
+html, body { overflow-x: hidden; }
+
+/* Clip sections so absolutely-positioned bits don't poke out */
+.hero,
+section,
+.bftsc-header,
+.bftsc-footer { overflow: hidden; }
+
+/* Marquee track is 200% wide; ensure wrapper never causes scroll */
+.marquee { overflow: hidden; }
+.marquee__track { display: flex; will-change: transform; }
+
+/* Ensure layout wrappers never exceed viewport width */
+.bftsc-container,
+.container { width: 100%; }
+
+/* Guard common cards/rows from forcing width */
+.grid-2, .grid-3, .logo-row { overflow: hidden; }
+.tile, .card, .valueCard, .person, .milestone, .quote { max-width: 100%; }
+
+/* Mobile: make partner logos wrap safely */
+@media (max-width: 768px) {
+  .logo-row { grid-template-columns: repeat(2, 1fr) !important; }
+}

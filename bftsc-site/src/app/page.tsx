@@ -1,35 +1,35 @@
 // src/app/bftsc/page.tsx
 // Server-safe (no event handlers).
-// Brand palette: Blue primary, a little Orange, plus White.
+// Phone-friendly overrides via CSS classes.
 
 export default function BFTSCPage() {
   return (
     <>
       <main style={sx.page}>
         {/* ========== HERO ========== */}
-        <section style={sx.hero}>
+        <section style={{ ...sx.hero, overflow: "clip" }} className="hero">
           <div style={sx.container}>
-            <div style={sx.heroGrid} className="stagger">
+            <div style={sx.heroGrid} className="stagger hero-grid">
               {/* Copy */}
               <div className="hero-text reveal-up">
                 <div style={sx.badge}>BFTSC</div>
-                <h1 style={sx.h1}>Smart Payments Built in Algeria</h1>
-                <p style={sx.lead}>
+                <h1 style={sx.h1} className="hero-title">Smart Payments Built in Algeria</h1>
+                <p style={sx.lead} className="hero-lead">
                   We’re building a future where payments are seamless, digital, and accessible to everyone.
                 </p>
-                <div style={sx.ctaRow}>
-                  <a href="#services" style={sx.btnPrimary} data-btn>Our Services</a>
-                  <a href="#contact" style={sx.btnGhost} data-btn>Contact Us</a>
+                <div style={sx.ctaRow} className="cta-row">
+                  <a href="#services" style={sx.btnPrimary} data-btn className="btn-wide">Our Services</a>
+                  <a href="#contact"  style={sx.btnGhost}    data-btn className="btn-wide">Contact Us</a>
                 </div>
 
-                <div style={sx.heroHiRow} className="stagger">
+                <div style={sx.heroHiRow} className="stagger hero-pills">
                   <HeroPill title="Secure by design" />
                   <HeroPill title="Merchant-friendly" />
                   <HeroPill title="Built for Algeria" />
                 </div>
               </div>
 
-              {/* Visual */}
+              {/* Visual (already hidden on phones by your globals.css .hero-visual rule) */}
               <div style={{ position: "relative" }} className="hero-visual reveal-up">
                 <div style={sx.heroArtWrap}>
                   {/* subtle stacked frames */}
@@ -37,10 +37,10 @@ export default function BFTSCPage() {
                   <div style={mix(sx.heroFrame, sx.frame2)} aria-hidden />
                   <div style={mix(sx.heroFrame, sx.frame3)} aria-hidden />
 
-                  {/* NEW: white panel card */}
+                  {/* white panel card */}
                   <div style={sx.heroPanel}>
                     <img
-                      src="/bftsc/bftsc-ambient.png"   // or /bftsc/bftsc-logo.jpg
+                      src="/bftsc/bftsc-ambient.png"
                       alt="BFTSC ambient visual"
                       style={sx.heroShotInPanel}
                       className="tilt"
@@ -60,29 +60,13 @@ export default function BFTSCPage() {
           </div>
 
           {/* marquee ribbon */}
-          <div style={sx.heroRibbonWrap}>
+          <div style={sx.heroRibbonWrap} className="hero-ribbon">
             <div className="marquee">
               <div className="marquee__track">
-                {[
-                  "Payments",
-                  "Security",
-                  "Reliability",
-                  "Insights",
-                  "Partnerships",
-                  "Innovation",
-                ]
-                  .concat([
-                    "Payments",
-                    "Security",
-                    "Reliability",
-                    "Insights",
-                    "Partnerships",
-                    "Innovation",
-                  ])
+                {["Payments","Security","Reliability","Insights","Partnerships","Innovation"]
+                  .concat(["Payments","Security","Reliability","Insights","Partnerships","Innovation"])
                   .map((t, i) => (
-                    <span key={i} style={sx.ribbonChip}>
-                      {t}
-                    </span>
+                    <span key={i} style={sx.ribbonChip}>{t}</span>
                   ))}
               </div>
             </div>
@@ -91,19 +75,19 @@ export default function BFTSCPage() {
 
         {/* ========== KARTA PROGRAM ADD ========== */}
         <Section id="karta" kicker="Program" title="Karta Innovation Program">
-          <div style={sx.kartaPromo}>
+          <div style={sx.kartaPromo} className="karta-promo">
             <div className="reveal-up">
-              <h3 style={sx.h3}>A practical step toward smarter payments</h3>
-              <p style={sx.body}>
+              <h3 style={sx.h3} className="h3-tight">A practical step toward smarter payments</h3>
+              <p style={sx.body} className="body-tight">
                 Karta is our closed-loop payment initiative tailored for high-frequency environments.
                 Simple for people, straightforward for merchants, and proudly local.
               </p>
-              <div style={sx.ctaRow}>
-                <a href="/karta" style={sx.btnPrimary} data-btn>Explore Karta</a>
-                <a href="#contact" style={sx.btnGhost} data-btn>Partner with us</a>
+              <div style={sx.ctaRow} className="cta-row">
+                <a href="/karta"   style={sx.btnPrimary} data-btn className="btn-wide">Explore Karta</a>
+                <a href="#contact" style={sx.btnGhost}   data-btn className="btn-wide">Partner with us</a>
               </div>
             </div>
-            <div style={sx.kartaCard} className="lift reveal-up">
+            <div style={sx.kartaCard} className="lift reveal-up karta-card">
               <img src="/karta/karta-hero.png" alt="Karta preview" style={sx.kartaImg} />
             </div>
           </div>
@@ -179,7 +163,7 @@ export default function BFTSCPage() {
 
         {/* ========== PARTNERS ========== */}
         <Section id="partners" kicker="Trust" title="Our Clients & Partners">
-          <div style={sx.logoRow} className="stagger">
+          <div style={sx.logoRow} className="stagger logo-row">
             <div style={sx.logoBox} className="stripe" aria-label="Partner logo placeholder" />
             <div style={sx.logoBox} className="stripe" aria-label="Partner logo placeholder" />
             <div style={sx.logoBox} className="stripe" aria-label="Partner logo placeholder" />
@@ -221,11 +205,11 @@ export default function BFTSCPage() {
 
         {/* ========== CAREERS & INVEST ========== */}
         <Section id="work" kicker="Join" title="Careers / Join Us">
-          <div style={sx.split2}>
+          <div style={sx.split2} className="split-2">
             {/* Careers panel */}
             <div style={sx.panel} className="lift reveal-up">
-              <h3 style={sx.h3}>Careers</h3>
-              <p style={sx.body}>
+              <h3 style={sx.h3} className="h3-tight">Careers</h3>
+              <p style={sx.body} className="body-tight">
                 We’re always looking for people who love building useful, well-crafted products.
               </p>
 
@@ -236,16 +220,16 @@ export default function BFTSCPage() {
                 <span style={sx.badgeSm}>Partnerships</span>
               </div>
 
-              <a href="#contact" style={sx.btnPrimary} data-btn>See Open Roles</a>
+              <a href="#contact" style={sx.btnPrimary} data-btn className="btn-wide">See Open Roles</a>
             </div>
 
             {/* Invest panel */}
             <div style={sx.panel} className="lift reveal-up">
-              <h3 style={sx.h3}>Invest in Us</h3>
-              <p style={sx.body}>
+              <h3 style={sx.h3} className="h3-tight">Invest in Us</h3>
+              <p style={sx.body} className="body-tight">
                 If you’re exploring fintech in North Africa, let’s talk.
               </p>
-              <a href="#contact" style={sx.btnGhost} data-btn>Request Pitch Deck</a>
+              <a href="#contact" style={sx.btnGhost} data-btn className="btn-wide">Request Pitch Deck</a>
             </div>
           </div>
         </Section>
@@ -253,13 +237,13 @@ export default function BFTSCPage() {
         {/* ========== CONTACT ========== */}
         <section id="contact" style={sx.contact}>
           <div style={sx.container}>
-            <div style={sx.contactGrid} className="stagger">
+            <div style={sx.contactGrid} className="stagger contact-grid">
               <div className="reveal-up">
-                <h3 style={sx.h3}>Contact BFTSC</h3>
-                <p style={sx.body}>Email or send us a note — we’ll get back quickly.</p>
+                <h3 style={sx.h3} className="h3-tight">Contact BFTSC</h3>
+                <p style={sx.body} className="body-tight">Email or send us a note — we’ll get back quickly.</p>
                 <div style={sx.linkRow}>
-                  <a href="mailto:hello@bftsc.dz" style={sx.linkBox} data-btn>hello@bftsc.dz</a>
-                  <a href="tel:+213000000000" style={sx.linkBox} data-btn>+213 ••• ••• •••</a>
+                  <a href="mailto:hello@bftsc.dz" style={sx.linkBox} data-btn className="btn-wide">hello@bftsc.dz</a>
+                  <a href="tel:+213000000000"    style={sx.linkBox} data-btn className="btn-wide">+213 ••• ••• •••</a>
                 </div>
                 <p style={{ opacity: 0.9, marginTop: 10 }}>Algiers · Oran · London</p>
               </div>
@@ -281,7 +265,7 @@ export default function BFTSCPage() {
         {/* No footer for a clean end */}
       </main>
 
-      {/* ====== CSS animations (palette-safe) ====== */}
+      {/* ====== CSS animations & mobile overrides ====== */}
       <style>{`
         :root{ --blue:#0B3D91; --blueDark:#082B69; --orange:#F5A300; --white:#FFFFFF; }
         @keyframes reveal-up{ from{opacity:0; transform:translateY(12px)} to{opacity:1; transform:none} }
@@ -306,8 +290,25 @@ export default function BFTSCPage() {
 
         .stripe{ background-size:56px 56px; animation:stripeMove 14s linear infinite; }
 
-        @media (prefers-reduced-motion: reduce){
-          *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition:none !important; }
+        /* ---- Phone overrides ---- */
+        @media (max-width: 768px){
+          /* HERO */
+          .hero-grid { grid-template-columns: 1fr !important; gap: 18px !important; }
+          .hero-title { font-size: 32px !important; line-height: 1.15 !important; }
+          .hero-lead  { font-size: 16px !important; }
+          .cta-row    { gap: 10px !important; }
+          .btn-wide   { display:block; width:100%; text-align:center; }
+          .hero-pills { grid-template-columns: 1fr !important; }
+
+          /* Ribbon breathing room */
+          .hero-ribbon { margin-top: 12px !important; }
+
+          /* Karta section */
+          .karta-promo { grid-template-columns: 1fr !important; }
+          .karta-card  { order: 2; } /* image after text on phones */
+
+          /* Grids */
+          .split-2 { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </>
@@ -361,10 +362,10 @@ function Header({ kicker, title }: { kicker?: string; title: string }) {
 }
 
 function Grid2({ children }: { children: React.ReactNode }) {
-  return <div style={sx.grid2} className="stagger">{children}</div>;
+  return <div style={sx.grid2} className="stagger grid-2">{children}</div>;
 }
 function Grid3({ children }: { children: React.ReactNode }) {
-  return <div style={sx.grid3} className="stagger">{children}</div>;
+  return <div style={sx.grid3} className="stagger grid-3">{children}</div>;
 }
 
 function Tile({ title, children }: { title: string; children: React.ReactNode }) {
@@ -528,15 +529,13 @@ const sx: Record<string, React.CSSProperties> = {
   },
   dot: { width: 8, height: 8, borderRadius: 999, background: PALETTE.orange },
 
-  /* container for the hero visual stays the same */
   heroArtWrap: {
     position: "relative",
-    width: "clamp(280px, 38vw, 560px)",
+    width: "min(100%, 560px)",
     aspectRatio: "4 / 3",
     margin: "0 auto",
   },
 
-  /* stacked frames (unchanged) */
   heroFrame: {
     position: "absolute",
     inset: "-6% -5%",
@@ -548,28 +547,25 @@ const sx: Record<string, React.CSSProperties> = {
   frame2: { transform: "rotate(2.8deg)", opacity: 0.55 },
   frame3: { transform: "rotate(-6deg)",  opacity: 0.35 },
 
-  /* NEW: the white card panel behind the image */
   heroPanel: {
     position: "absolute",
     inset: 0,
     background: "#FFFFFF",
     borderRadius: 20,
-    padding: 10,                               // creates the white border around the image
+    padding: 10,
     boxShadow: "0 20px 56px rgba(0,0,0,0.18)",
-    border: "1px solid rgba(255,255,255,0.8)", // thin outline to blend with hero
+    border: "1px solid rgba(255,255,255,0.8)",
   },
 
-  /* image inside the white panel */
   heroShotInPanel: {
     width: "100%",
     height: "100%",
     objectFit: "cover",
     borderRadius: 14,
-    border: "1px solid rgba(11,61,145,0.08)", // very soft inner border
+    border: "1px solid rgba(11,61,145,0.08)",
     filter: "saturate(1.03) contrast(1.03)",
   },
 
-  /* badge stays the same, but here for convenience */
   heroBadge: {
     position: "absolute",
     right: -12,
