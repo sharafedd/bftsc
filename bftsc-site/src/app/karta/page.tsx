@@ -41,7 +41,7 @@ export default function KartaPage() {
                       <div style={sx.heroHiSub}>Offline-tolerant acceptance</div>
                     </div>
                   </div>
-                  <div style={sx.heroHi} className="lift reveal-up">
+                  <div style={sx.heroHi}  className="lift reveal-up">
                     <div style={sx.phIcon} className="stripe-slide" aria-hidden />
                     <div style={sx.heroHiText}>
                       <div style={sx.heroHiHead}>Merchant-Friendly</div>

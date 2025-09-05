@@ -40,7 +40,7 @@ export default function BFTSCPage() {
                   {/* white panel card */}
                   <div style={sx.heroPanel}>
                     <img
-                      src="/bftsc/bftsc-ambient.png"
+                      src="/bftsc/bftsc-logo.jpg"
                       alt="BFTSC ambient visual"
                       style={sx.heroShotInPanel}
                       className="tilt"
@@ -49,7 +49,7 @@ export default function BFTSCPage() {
 
                   {/* corner badge */}
                   <img
-                    src="/bftsc/bftsc-logo.jpg"
+                    src="/bftsc/bftsc-ambient.png"
                     alt="BFTSC logo"
                     style={sx.heroBadge}
                     className="float"
